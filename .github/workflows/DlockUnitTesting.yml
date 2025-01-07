@@ -15,8 +15,3 @@ jobs:
         shell: cmd
         run: |
           matlab -batch "openProject('${{ env.PROJECTNAME }}');, runSLTest;
-      - name: Archive results
-         uses: actions/upload-artifact@v2
-         with:
-            name: ${{ env.ARTIFACTS_NAME }}
-            path: ./TestResults/**/*
