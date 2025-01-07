@@ -1,0 +1,22 @@
+name: Model verification example for door lock control model
+
+# Allows you to run this workflow manually from the Actions tab
+workflow_dispatch:
+
+env:
+  PROJECTNAME: CruiseControlExample.prj
+  ARTIFACTS_NAME: DLockCntr_ci_artifacts
+
+jobs:
+  verify:
+    runs-on: self-hosted
+    steps:
+      - name: Run SLTest
+        shell: cmd
+        run: |
+          matlab -batch "openProject('${{ env.PROJECTNAME }}');, runSLTest;
+      - name: Archive results
+         uses: actions/upload-artifact@v2
+         with:
+            name: ${{ env.ARTIFACTS_NAME }}
+            path: ./TestResults/**/*
