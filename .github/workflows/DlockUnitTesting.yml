@@ -12,8 +12,9 @@ on:
   workflow_dispatch:
 
 env:
-  PROJECTNAME: CruiseControlExample.prj
+  PROJECTNAME: DemoBatchTokenGithub.prj
   ARTIFACTS_NAME: DLockCntr_ci_artifacts
+  MLM_LICENSE_TOKEN: ${{ secrets.MyBatchToken }}
 
 jobs:
   setup:
