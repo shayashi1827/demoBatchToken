@@ -1,0 +1,17 @@
+#Copyright 2025 The MathWorks, Inc.
+
+# defining the stages
+stages:
+  - ModelVerification
+
+# jobs 
+SLTest_pipeline:
+  stage: ModelVerification
+  tags:
+    - batchtoken-test
+  script:
+    - matlab -batch "openProject('DemoBatchToken.prj'); runSLTest;"
+  artifacts:
+    when: always
+    paths:
+      - ./TestResults/**/*
