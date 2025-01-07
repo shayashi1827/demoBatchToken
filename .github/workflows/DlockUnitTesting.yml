@@ -30,3 +30,11 @@ jobs:
         shell: cmd
         run: |
           matlab-batch "openProject('${{ env.PROJECTNAME }}');, runSLTest;
+
+  post:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sltest_artifact
+          path: TestResults/**/*
