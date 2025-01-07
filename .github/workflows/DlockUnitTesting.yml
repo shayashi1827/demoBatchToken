@@ -16,6 +16,12 @@ env:
   ARTIFACTS_NAME: DLockCntr_ci_artifacts
 
 jobs:
+  setup:
+    runs-on: self-hosted
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
   verify:
     runs-on: self-hosted
     steps:
